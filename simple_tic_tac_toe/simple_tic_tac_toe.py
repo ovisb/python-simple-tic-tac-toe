@@ -17,6 +17,12 @@ def create_grid(user_input: str) -> list[list[str]]:
 
 
 def is_row_winner(grid: list[list[str]], player: str) -> bool:
+    """
+    Check if X or O has won in any of the rows
+    @param grid: 2d 3x3 list
+    @param player: X or O
+    @return: true if player has won else false
+    """
     for row in grid:
         if row.count(player) == MAX_GRID:
             return True
@@ -25,6 +31,12 @@ def is_row_winner(grid: list[list[str]], player: str) -> bool:
 
 
 def is_col_winner(grid: list[list[str]], player: str) -> bool:
+    """
+    Check if X or O has won in any of the columns
+    @param grid: 2d 3x3 list
+    @param player: X or O
+    @return: true if player has won else false
+    """
     for i in range(len(grid)):
         count = 0
         for j in range(len(grid[i])):
@@ -37,6 +49,12 @@ def is_col_winner(grid: list[list[str]], player: str) -> bool:
 
 
 def is_diag_winner(grid: list[list[str]], player: str) -> bool:
+    """
+    Check if X or O has won in any of the diagonals
+    @param grid: 2d 3x3 list
+    @param player: X or O
+    @return: true if player won diag else false
+    """
     count = 0
     # check diag
     for i in range(MAX_GRID):
@@ -56,6 +74,11 @@ def is_diag_winner(grid: list[list[str]], player: str) -> bool:
 
 
 def is_cell_empty(grid: list[list[str]]) -> bool:
+    """
+    Check if cell is empty
+    @param grid: 2d 3x3 list
+    @return: true if cell is empty else false
+    """
     for row in grid:
         for col in row:
             if col == "_":
@@ -65,17 +88,22 @@ def is_cell_empty(grid: list[list[str]]) -> bool:
 
 
 def get_player_diff(grid: list[list[str]]) -> int:
-    player_X = 0
-    player_O = 0
+    """
+    Get difference between X or O / O or X
+    @param grid: 2d 3x3 list
+    @return: difference
+    """
+    player_x = 0
+    player_o = 0
 
     for row in grid:
         for col in row:
             if col == "X":
-                player_X += 1
+                player_x += 1
             elif col == "O":
-                player_O += 1
+                player_o += 1
 
-    return player_X - player_O if player_X > player_O else player_O - player_X
+    return player_x - player_o if player_x > player_o else player_o - player_x
 
 
 def print_grid(grid: list[list[str]]) -> None:
