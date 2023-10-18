@@ -106,6 +106,35 @@ def get_player_diff(grid: list[list[str]]) -> int:
     return player_x - player_o if player_x > player_o else player_o - player_x
 
 
+def is_game_finished(grid: list[list[str]]) -> bool:
+    """
+    Check if game has finished
+    @param grid: 2d 3x3 list
+    @return: true if any of the players has won or it's a draw else false
+    """
+    has_ended = True
+    if (
+        is_row_winner(grid, "X")
+        or is_col_winner(grid, "X")
+        or is_diag_winner(grid, "X")
+    ):
+        print("X wins")
+        return has_ended
+    elif (
+        is_row_winner(grid, "O")
+        or is_col_winner(grid, "O")
+        or is_diag_winner(grid, "O")
+    ):
+        print("O wins")
+        return has_ended
+    # if no winner and cell is not empty it's a draw
+    elif not is_cell_empty(grid):
+        print("Draw")
+        return has_ended
+
+    return False
+
+
 def print_grid(grid: list[list[str]]) -> None:
     """
     Print Game state / grid

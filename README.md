@@ -18,7 +18,15 @@ This is _Simple Tic Tac Toe_ project that is part of Hyperskill platform from Je
 
 ## Project description
 
-Simple Tic Tac Toe project.
+Simple Tic Tac Toe game which can be played by two players via coordinates inputs in the format of:
+
+(1, 1) (1, 2) (1, 3)
+(2, 1) (2, 2) (2, 3)
+(3, 1) (3, 2) (3, 3)
+
+These represent the location of X or O on the grid, first tuple item being the row while the second is the place on the column.
+
+Both players take turns and game ends once one of players wins or there is a draw(no winners and no empty cells left in the grid). 
 
 #### Install steps
 

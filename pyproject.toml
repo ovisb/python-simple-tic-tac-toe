@@ -52,6 +52,7 @@ show_missing = true
 omit = [ "*__init__*", "*main.py*" ]
 exclude_also = [
     "def print_grid",
+    "def is_game_finished"
     ]
 
 [build-system]

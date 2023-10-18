@@ -1,20 +1,19 @@
-"""Main module"""
-from simple_tic_tac_toe import (  # get_player_diff,; is_cell_empty,; is_col_winner,; is_diag_winner,; is_row_winner,
-    create_grid,
-    print_grid,
-)
+# write your code here
+from simple_tic_tac_toe import create_grid, is_game_finished, print_grid
 
 
 def main() -> None:
     """Main function"""
-    # user_input = input()
-    user_input = "X_X_O____"
-    grid = create_grid(user_input)
+    blank_grid = "_________"
+    players = ("X", "O")
+    i = 0
+
+    grid = create_grid(blank_grid)
     print_grid(grid)
 
     while True:
+        coordinates = input("Enter coordinates: ").split()
         try:
-            coordinates = input("Enter coordinates: ").split()
             a = int(coordinates[0])
             b = int(coordinates[1])
         except ValueError:
@@ -32,33 +31,11 @@ def main() -> None:
             print("This cell is occupied! Choose another one!")
             continue
 
-        grid[a - 1][b - 1] = "X"
+        grid[a - 1][b - 1] = players[i % len(players)]
         print_grid(grid)
-        break
-
-    # if (
-    #     is_row_winner(grid, "X")
-    #     and is_row_winner(grid, "O")
-    #     or is_col_winner(grid, "X")
-    #     and is_col_winner(grid, "O")
-    # ) or get_player_diff(grid) >= 2:
-    #     print("Impossible")
-    # elif (
-    #     is_row_winner(grid, "X")
-    #     or is_col_winner(grid, "X")
-    #     or is_diag_winner(grid, "X")
-    # ):
-    #     print("X wins")
-    # elif (
-    #     is_row_winner(grid, "O")
-    #     or is_col_winner(grid, "O")
-    #     or is_diag_winner(grid, "O")
-    # ):
-    #     print("O wins")
-    # elif is_cell_empty(grid):
-    #     print("Game not finished")
-    # else:
-    #     print("Draw")
+        if is_game_finished(grid):
+            break
+        i += 1
 
 
 if __name__ == "__main__":
