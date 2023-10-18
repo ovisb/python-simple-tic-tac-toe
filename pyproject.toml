@@ -32,11 +32,12 @@ line_length = 88
 
 [tool.flake8]
 max-line-length = 120
-ignore = ["E226", "E302", "E41"]
+ignore = ["E226", "E302", "E41", "W503"]
 
 [tool.mypy]
 files = ["simple_tic_tac_toe", "tests"]
 ignore_missing_imports = true
+no_namespace_packages = true
 
 [tool.pytest.ini_options]
 minversion = "6.0"
@@ -49,6 +50,9 @@ source = ["simple_tic_tac_toe"]
 [tool.coverage.report]
 show_missing = true
 omit = [ "*__init__*", "*main.py*" ]
+exclude_also = [
+    "def print_grid",
+    ]
 
 [build-system]
 requires = ["poetry-core"]
